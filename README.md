@@ -95,14 +95,14 @@ end
 ```
 
 ## Range Measurement - 1st FFT Operation
-*Implement the 1D FFT on the Mixed Signal*
-*Reshape the vector into Nr*Nd array*
-*Run the FFT on the beat signal along the range bins dimension (Nr)*
-*Normalize the FFT output*
-*Take the absolute value of that output*
-*Keep one half of the signal*
-*Plot the output*
-*There should be a peak at the initial position of the target*
+1. *Implement the 1D FFT on the Mixed Signal*
+2. *Reshape the vector into Nr*Nd array*
+3. *Run the FFT on the beat signal along the range bins dimension (Nr)*
+4. *Normalize the FFT output*
+5. *Take the absolute value of that output*
+6. *Keep one half of the signal*
+7. *Plot the output*
+8. *There should be a peak at the initial position of the target*
 
 ```
 %reshape the vector into Nr*Nd array. Nr and Nd here would also define the size of
