@@ -19,3 +19,13 @@ c = 3e8;                     % Speed of light
 Max_range = 200;             % Maximum Range of Radar
 Max_velocity = 100;          % Maximum Velocity of target vehicle
 ```
+
+## Target Information
+
+```
+% define the target's initial position and velocity. Note : Velocity
+% remains contant
+
+R = 140;                     % target's initial position
+v = 40;                      % target's velocity
+```
