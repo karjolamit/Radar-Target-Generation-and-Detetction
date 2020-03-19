@@ -96,3 +96,49 @@ for i=1:length(t)
     
 end
 ```
+
+## Range Measurement - 1st FFT Operation
+*Implement the 1D FFT on the Mixed Signal*
+*Reshape the vector into Nr*Nd array*
+*Run the FFT on the beat signal along the range bins dimension (Nr)*
+*Normalize the FFT output*
+*Take the absolute value of that output*
+*Keep one half of the signal*
+*Plot the output*
+*There should be a peak at the initial position of the target*
+
+```
+%reshape the vector into Nr*Nd array. Nr and Nd here would also define the size of
+%Range and Doppler FFT respectively.
+
+Mix = reshape(Mix,[Nr,Nd]);
+
+%TODO*:
+%run the FFT on the beat signal along the range bins dimension (Nr) and
+%normalize.
+
+fft_1D = fft(Mix,Nr);
+
+%%TODO*:
+% Take the absolute value of FFT output
+
+fft_1D = abs(fft_1D);
+fft_1D = fft_1D/max(fft_1D);
+
+%TODO*:
+% Output of FFT is double sided signal, but we are interested in only one 
+% side of the spectrum.
+% Hence we throw out half of the samples.
+
+final_fft_1D  = fft_1D(1:Nr/2+1);
+
+%plotting the range
+figure ('Name','Range from First FFT')
+plot(fft_1D)
+axis ([0 200 0 1]);
+xlabel('Range in meters')
+ylabel('Normalized Amplitude')
+
+![Plot for 1D FFT Range measurement](C:\Amit_Google_Drive\Work\UDACITY\Sensor Fusion Engineer\Course Material\4 RADAR\Amit_Radar_Target Generation and Detection)
+
+```
