@@ -140,4 +140,4 @@ xlabel('Range in meters')
 ylabel('Normalized Amplitude')
 
 ```
-![Plot for 1D FFT Range measurement](Desktop)
+![Plot for 1D FFT Range measurement](https://github.com/karjolamit/Radar-Target-Generation-and-Detetction/blob/master/Plot%20for%201D%20FFT%20Range%20measurement.png)
