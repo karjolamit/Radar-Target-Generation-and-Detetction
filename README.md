@@ -95,7 +95,7 @@ end
 ```
 
 ## Range Measurement - 1st FFT Operation
-1. *Implement the 1D FFT on the Mixed Signal*
+*1. Implement the 1D FFT on the Mixed Signal*
 2. *Reshape the vector into Nr*Nd array*
 3. *Run the FFT on the beat signal along the range bins dimension (Nr)*
 4. *Normalize the FFT output*
