@@ -1,6 +1,8 @@
 # Radar-Target-Generation-and-Detetction
 Based on Radar System Requirements, a radar target generation and detection system is developed using FMCW waveform configuration, signal propagation technique, Range/Doppler FFT  method and finally 2D CFAR implementation.
 `git status`
+
+```
 %% Radar Specifications 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Frequency of operation = 77GHz
@@ -15,3 +17,4 @@ d_res = 1;                   % Range Resolution
 c = 3e8;                     % Speed of light
 Max_range = 200;             % Maximum Range of Radar
 Max_velocity = 100;          % Maximum Velocity of target vehicle
+```
