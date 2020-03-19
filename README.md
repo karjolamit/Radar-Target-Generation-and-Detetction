@@ -139,6 +139,6 @@ axis ([0 200 0 1]);
 xlabel('Range in meters')
 ylabel('Normalized Amplitude')
 
-![Plot for 1D FFT Range measurement](C:\Amit_Google_Drive\Work\UDACITY\Sensor Fusion Engineer\Course Material\4 RADAR\Amit_Radar_Target Generation and Detection)
+![ Plot for 1D FFT Range measurement](C:\Amit_Google_Drive\Work\UDACITY\Sensor Fusion Engineer\Course Material\4 RADAR\Amit_Radar_Target Generation and Detection)
 
 ```
