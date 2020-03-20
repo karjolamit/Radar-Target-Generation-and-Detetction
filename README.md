@@ -95,14 +95,14 @@ end
 ```
 
 ## Range Measurement - 1st FFT Operation
-*1. Implement the 1D FFT on the Mixed Signal*
-2. *Reshape the vector into Nr*Nd array*
-3. *Run the FFT on the beat signal along the range bins dimension (Nr)*
-4. *Normalize the FFT output*
-5. *Take the absolute value of that output*
-6. *Keep one half of the signal*
-7. *Plot the output*
-8. *There should be a peak at the initial position of the target*
+1. Implement the 1D FFT on the Mixed Signal
+2. Reshape the vector into Nr*Nd array
+3. Run the FFT on the beat signal along the range bins dimension (Nr)
+4. Normalize the FFT output
+5. Take the absolute value of that output
+6. Keep one half of the signal
+7. Plot the output
+8. There should be a peak at the initial position of the target
 
 ```
 %reshape the vector into Nr*Nd array. Nr and Nd here would also define the size of
@@ -173,28 +173,28 @@ zlabel('Amplitude')
 ![Plot for 2D FFT Range Doppler Map](https://github.com/karjolamit/Radar-Target-Generation-and-Detetction/blob/master/Plot%20for%202D%20FFT%20Range%20Doppler%20Map.png)
 
 ## 2D CFAR Operation
-*Determine the number of Training cells for each dimension Tr and Td. Similarly, pick the number of guard cells Gr and Gd.
-Slide the Cell Under Test (CUT) across the complete cell matrix
-Select the grid that includes the training, guard and test cells 
-Grid Size = (2Tr+2Gr+1) * (2Td+2Gd+1)
-The total number of cells in the guard region and cell under test. (2Gr+1) * (2Gd+1)
-This gives the Training Cells: (2Tr+2Gr+1) * (2Td+2Gd+1) - (2Gr+1) * (2Gd+1)
-Measure and average the noise across all the training cells. This gives the threshold
-Add the offset (if in signal strength in dB) to the threshold to keep the false alarm to the minimum
-Determine the signal level at the Cell Under Test
-If the CUT signal level is greater than the Threshold, assign a value of 1, else equate it to zero
-Since the cell under test are not located at the edges, due to the training cells occupying the edges, we suppress the edges to zero
-Any cell value that is neither 1 nor a 0, assign it a zero*
+
+1. Determine the number of Training cells for each dimension Tr and Td. Similarly, pick the number of guard cells Gr and Gd.
+2. Slide the Cell Under Test (CUT) across the complete cell matrix
+3. Select the grid that includes the training, guard and test cells; Grid Size = (2Tr+2Gr+1) * (2Td+2Gd+1)
+4. The total number of cells in the guard region and cell under test. (2Gr+1) * (2Gd+1)
+5. This gives the Training Cells: (2Tr+2Gr+1) * (2Td+2Gd+1) - (2Gr+1) * (2Gd+1)
+6. Measure and average the noise across all the training cells. This gives the threshold
+7. Add the offset (if in signal strength in dB) to the threshold to keep the false alarm to the minimum
+8. Determine the signal level at the Cell Under Test
+9. If the CUT signal level is greater than the Threshold, assign a value of 1, else equate it to zero
+10. Since the cell under test are not located at the edges, due to the training cells occupying the edges, we suppress the edges to zero
+11. Any cell value that is neither 1 nor a 0, assign it a zero
 
 ![FFT block cells](https://github.com/karjolamit/Radar-Target-Generation-and-Detetction/blob/master/FFT%20block%20cells.png)
 
 The CFAR process includes the sliding of a window across the cells in FFT blocks. Each window consists of the following cells:
 
-**Cell Under Test (CUT):** The cell that is tested to detect the presence of the target by comparing the signal level against the noise estimate (threshold).
-**Training Cells:** The level of noise is measured over the Training Cells. The Training Cells can be divided into two regions, the cells lagging the CUT, called lagging Training Cells and the cells leading the CUT, called Leading Training Cells. 
+1. **Cell Under Test (CUT):** The cell that is tested to detect the presence of the target by comparing the signal level against the noise estimate (threshold).
+2. **Training Cells:** The level of noise is measured over the Training Cells. The Training Cells can be divided into two regions, the cells lagging the CUT, called lagging Training Cells and the cells leading the CUT, called Leading Training Cells. 
 The number of training cells is decided based on the environment. If a dense traffic scenario then the fewer training cells should be used, as closely spaced targets can impact the noise estimate. Considering this, I selected the following values for training cells.
-**Guard Cells:** The cells just next to CUT are assigned as Guard Cells. The purpose of the Guard Cells is to avoid the target signal from leaking into the training cells that could adversely affect the noise estimate. The number of guard cells should be decided based on the leakage of the target signal out of the cell under test. If target reflections are strong, they often get into surrounding bins.
-**Threshold Factor (Offset):** Use an offset value to scale the noise threshold. If the signal strength is defined in logarithmic form then add this offset value to the average noise estimate, else multiply it.
+3. **Guard Cells:** The cells just next to CUT are assigned as Guard Cells. The purpose of the Guard Cells is to avoid the target signal from leaking into the training cells that could adversely affect the noise estimate. The number of guard cells should be decided based on the leakage of the target signal out of the cell under test. If target reflections are strong, they often get into surrounding bins.
+4. **Threshold Factor (Offset):** Use an offset value to scale the noise threshold. If the signal strength is defined in logarithmic form then add this offset value to the average noise estimate, else multiply it.
 
 ```
 %Select the number of Training Cells in both the dimensions.
